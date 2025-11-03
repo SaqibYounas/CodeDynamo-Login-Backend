@@ -12,6 +12,7 @@ export const EMAIL_MESSAGES = {
   SERVER_ERROR: "Server error. Try Again!",
 };
 
+
 export const LOGS = {
   CHECK_EMAIL_ERROR: "checkEmail error:",
 };
