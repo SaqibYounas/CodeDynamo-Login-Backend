@@ -1,3 +1,4 @@
+import { getUserBucket } from "../../utils/tokenBucket.js";
 import logins from "./loginDataSave.js";
 import generateToken from "../../utils/generateToken.js";
 import { STATUS_CODES } from "../../constants/statusCodes.js";
@@ -5,6 +6,16 @@ import { LOGIN_MESSAGES, LOGS } from "../../constants/loginMessage.js";
 
 export const login = async (req, res) => {
   try {
+    const { email } = req.body;
+
+    const bucket = getUserBucket(email);
+
+    if (!bucket.tryRemoveToken()) {
+      return res
+        .status(429)
+        .json({ message: LOGIN_MESSAGES.MANY_ATTEMPTS });
+    }
+
     const response = await logins(req.body);
 
     if (
@@ -52,6 +63,7 @@ export const login = async (req, res) => {
       .json({ error: LOGIN_MESSAGES.SERVER_ERROR });
   }
 };
+
 
 export const googleCallback = (req, res) => {
   try {
