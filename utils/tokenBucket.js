@@ -28,7 +28,7 @@ export const userBuckets = new Map();
 
 export const getUserBucket = (email) => {
   if (!userBuckets.has(email)) {
-    userBuckets.set(email, new TokenBucket(5, 1)); 
+    userBuckets.set(email, new TokenBucket(5, 1));
   }
   return userBuckets.get(email);
 };

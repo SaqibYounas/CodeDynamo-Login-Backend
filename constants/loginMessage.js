@@ -7,7 +7,7 @@ export const LOGIN_MESSAGES = {
   USER_NOT_FOUND: "User not found",
   GOOGLE_FAILED: "Google login failed",
   SERVER_ERROR: "Internal Server Error",
-  MANY_ATTEMPTS:"Too many login attempts. Try again later."
+  MANY_ATTEMPTS: "Too many login attempts. Try again later."
 };
 
 export const EMAIL_MESSAGES = {

@@ -1,7 +1,6 @@
-// server.js
 import cluster from 'cluster';
 import os from 'os';
-import {startServer} from './app.js';
+import { startServer } from './app.js';
 
 const numCPUs = os.cpus().length;
 
@@ -18,5 +17,5 @@ if (cluster.isPrimary || cluster.isMaster) {
     cluster.fork();
   });
 } else {
-  startServer(); 
+  startServer();
 }
